@@ -1,0 +1,4 @@
+
+que falta?
+
+comando (no tocar): python -m pyinstaller --onefile index.py

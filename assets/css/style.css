@@ -1,0 +1,665 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg-body: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-card-alt: #f1f5f9;
+    --bg-hover: #e2e8f0;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --border-subtle: #edf2f7;
+
+    /* Acento Principal: Índigo Moderno */
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --primary-light: #e0e7ff;
+    --primary-subtle: rgba(79, 70, 229, 0.08);
+
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --danger-light: #fee2e2;
+
+    --success: #10b981;
+    --success-hover: #059669;
+    --success-light: #d1fae5;
+
+    --warning: #f59e0b;
+    --warning-hover: #d97706;
+    --warning-light: #fef3c7;
+
+    --navbar-bg: rgba(255, 255, 255, 0.9);
+    --navbar-border: #e2e8f0;
+
+    /* Sombras Difusas Multicapa (Soft Ambient Shadows) */
+    --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
+    --shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 10px 15px -3px rgba(15, 23, 42, 0.06), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.07), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+
+    --radius-lg: 16px;
+    --radius: 12px;
+    --radius-sm: 8px;
+}
+
+[data-theme="dark"] {
+    --bg-body: #0b1329;
+    --bg-card: #141f36;
+    --bg-card-alt: #0d1629;
+    --bg-hover: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #223250;
+    --border-subtle: #192642;
+
+    --primary: #6366f1;
+    --primary-hover: #818cf8;
+    --primary-light: #1e1b4b;
+    --primary-subtle: rgba(99, 102, 241, 0.15);
+
+    --danger: #f87171;
+    --danger-hover: #ef4444;
+    --danger-light: #450a0a;
+
+    --success: #34d399;
+    --success-hover: #10b981;
+    --success-light: #064e3b;
+
+    --warning: #fbbf24;
+    --warning-hover: #f59e0b;
+    --warning-light: #451a03;
+
+    --navbar-bg: rgba(20, 31, 54, 0.9);
+    --navbar-border: #223250;
+
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    --shadow-lg: 0 20px 30px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Navbar Moderna */
+.navbar {
+    background-color: var(--navbar-bg);
+    border-bottom: 1px solid var(--navbar-border);
+    padding: 0.75rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.nav-brand {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.45rem 0.85rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Menú Hamburguesa Moderno y Explicativo */
+.hamburger-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.hamburger-btn {
+    background: var(--bg-card-alt);
+    border: 1px solid var(--border-color);
+    font-size: 1.15rem;
+    cursor: pointer;
+    color: var(--text-main);
+    padding: 0.4rem 0.65rem;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+}
+
+.hamburger-btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--primary);
+}
+
+.hamburger-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 8px);
+    background-color: var(--bg-card);
+    min-width: 260px;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    padding: 0.5rem;
+    animation: fadeInSlide 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hamburger-menu.active .hamburger-content {
+    display: block;
+}
+
+.hamburger-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    text-decoration: none;
+    color: var(--text-main);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.25rem;
+}
+
+.hamburger-item:last-child {
+    margin-bottom: 0;
+}
+
+.hamburger-item:hover {
+    background-color: var(--bg-card-alt);
+    color: var(--primary);
+    transform: translateX(3px);
+}
+
+.hamburger-icon {
+    font-size: 1.3rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-subtle);
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.hamburger-text-title {
+    font-weight: 600;
+    font-size: 0.92rem;
+    line-height: 1.2;
+}
+
+.hamburger-text-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.2;
+    margin-top: 2px;
+}
+
+/* Botones Modernos */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.55rem 1.15rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-sm {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.82rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.08);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: #ffffff !important;
+}
+.btn-danger:hover {
+    background-color: var(--danger-hover);
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background-color: var(--success);
+    color: #ffffff !important;
+}
+.btn-success:hover {
+    background-color: var(--success-hover);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: var(--bg-card);
+    color: var(--text-main) !important;
+    border: 1px solid var(--border-color);
+}
+.btn-secondary:hover {
+    background-color: var(--bg-card-alt);
+    border-color: var(--text-muted);
+    transform: translateY(-1px);
+}
+
+.btn-theme {
+    background: var(--bg-card-alt);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 0.4rem 0.7rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-theme:hover {
+    background-color: var(--bg-hover);
+    transform: rotate(15deg);
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    flex: 1;
+    width: 100%;
+}
+
+.container-sm {
+    max-width: 480px;
+}
+
+/* Tarjetas (Cards) */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+.card-interactive {
+    cursor: pointer;
+}
+
+.card-interactive:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+}
+
+.card-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Tarjetas del Hub de Inicio */
+.hub-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.35rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.hub-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+}
+
+.hub-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--primary-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 0.85rem;
+}
+
+.hub-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    color: var(--text-main);
+}
+
+.hub-card-desc {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.45;
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+}
+
+/* Formularios Amigables */
+.form-group {
+    margin-bottom: 1.15rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.65rem 0.95rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card-alt);
+    color: var(--text-main);
+    font-size: 0.925rem;
+    font-family: inherit;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    background-color: var(--bg-card);
+    box-shadow: 0 0 0 3px var(--primary-subtle);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Selectores de opciones desplegables estilizados con esquinas redondeadas uniformes */
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    background-size: 1.1rem;
+    padding-right: 2.5rem;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+}
+
+[data-theme="dark"] select.form-control {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+}
+
+select.form-control option {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    padding: 0.5rem;
+}
+
+/* Casillas de selección (Checkboxes) y Botones de opción (Radios) modernos y redondeados */
+input[type="checkbox"], input[type="radio"] {
+    accent-color: var(--primary);
+    width: 1.15rem;
+    height: 1.15rem;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+input[type="checkbox"] {
+    border-radius: 6px;
+}
+
+/* Tarjetas interactivas para opciones predefinidas (encuestas, selección múltiple, etc.) */
+.choice-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-card-alt);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 0.5rem;
+    user-select: none;
+}
+
+.choice-option:hover {
+    border-color: var(--primary);
+    background: var(--primary-subtle);
+    transform: translateY(-1px);
+}
+
+.choice-option:has(input:checked) {
+    border-color: var(--primary);
+    background: var(--primary-subtle);
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.choice-option input[type="radio"],
+.choice-option input[type="checkbox"] {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* Tablas */
+.table-responsive {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.table th, .table td {
+    padding: 0.9rem 1.1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table th {
+    background-color: var(--bg-card-alt);
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover td {
+    background-color: var(--bg-card-alt);
+}
+
+/* Badges / Etiquetas Suaves */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 9999px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.badge-estudiante { background: #e0f2fe; color: #0284c7; }
+.badge-delegado { background: #fef3c7; color: #b45309; }
+.badge-profesor { background: #d1fae5; color: #059669; }
+.badge-vice-director { background: #ede9fe; color: #7c3aed; }
+.badge-director { background: #fee2e2; color: #dc2626; font-weight: 700; }
+
+[data-theme="dark"] .badge-estudiante { background: #0c4a6e; color: #bae6fd; }
+[data-theme="dark"] .badge-delegado { background: #78350f; color: #fde68a; }
+[data-theme="dark"] .badge-profesor { background: #064e3b; color: #a7f3d0; }
+[data-theme="dark"] .badge-vice-director { background: #4c1d95; color: #ddd6fe; }
+[data-theme="dark"] .badge-director { background: #7f1d1d; color: #fecaca; }
+
+.badge-nota {
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+.nota-alta { background-color: var(--success-light); color: var(--success); }
+.nota-media { background-color: var(--warning-light); color: var(--warning); }
+.nota-baja { background-color: var(--danger-light); color: var(--danger); }
+
+/* Alertas Modernas */
+.alert {
+    padding: 0.9rem 1.2rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    font-size: 0.92rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid;
+}
+
+.alert-success { background: var(--success-light); color: var(--success); border-color: var(--success); }
+.alert-error, .alert-danger { background: var(--danger-light); color: var(--danger); border-color: var(--danger); }
+.alert-warning { background: var(--warning-light); color: var(--warning); border-color: var(--warning); }
+.alert-info { background: var(--primary-light); color: var(--primary); border-color: var(--primary); }
+
+/* Footer */
+footer {
+    background-color: var(--navbar-bg);
+    border-top: 1px solid var(--navbar-border);
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: auto;
+}
+
+/* Reglas de Impresión Limpia (Boletines y Reportes) */
+@media print {
+    .navbar, footer, .btn, .no-print, #hamburgerMenu {
+        display: none !important;
+    }
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+    }
+}

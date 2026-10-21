@@ -1,0 +1,17 @@
+{
+    "ssh": {
+        "host": "207.180.226.113",
+        "port": 22,
+        "username": "root",
+        "password": "Lisandro159"
+    },
+    "mysql": {
+        "host": "127.0.0.1", 
+        "port": 3306,
+        "username": "proyecto_user",
+        "password": "Lisandro159",
+        "database": "proyecto"
+    },
+    "mode": "system",
+    "lenguaje": "es"
+}
